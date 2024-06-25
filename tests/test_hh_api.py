@@ -16,11 +16,15 @@ def test_get_vacancies(hh_api):
     Тест проверки получения списка вакансий при введенном параметре
     ВАЖНО! Перед запуском теста необходимо в файле hh_api.py получить обновленный список вакансий и ввести id
     из первой вакансии.
+    Пытался сделать фикстуру, создавая такой же объект класса и получая id, но при запуске сравнения получал ошибку:
+    TypeError: 'str' object is not callable. Ничего не придумал
     """
     hh_api.text = 'Python'
     hh_api.params['per_page'] = 1
-    assert hh_api.get_vacancies()[0].get('id') == '102264189'
-
+    # a = int(hh_api.get_vacancies()[0].get('id'))
+    # b = int(hh_api_with_request()[0].get('id'))
+    # assert a == b
+    assert hh_api.get_vacancies()[0].get('id') == '102612686'
 
 def test_text(hh_api):
     """

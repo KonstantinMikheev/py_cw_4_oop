@@ -9,3 +9,7 @@ class APIExceptions(Exception):
 
 class HeadHunterAPIException(APIExceptions):
     pass
+
+
+class VacanciesException(APIExceptions):
+    pass

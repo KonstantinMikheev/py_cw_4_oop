@@ -106,13 +106,13 @@ class HeadHunterAPI(API):
         return response.status_code == 200
 
 
-# if __name__ == '__main__':
-#
-#     hh_api = HeadHunterAPI()
-#     hh_api.text = 'Python'
-#     hh_api.params['per_page'] = 1
-#     hh_vacancies = hh_api.get_vacancies()
-#     resp = hh_api.connect_to_api()
-#     print(resp)
-#     print(hh_api._check_status(resp))
-#     print(hh_vacancies)
+if __name__ == '__main__':
+
+    hh_api = HeadHunterAPI()
+    hh_api.text = 'Python'
+    hh_api.params['per_page'] = 1
+    hh_vacancies = hh_api.get_vacancies()
+    #resp = hh_api.connect_to_api()
+    #print(resp)
+    #print(hh_api._check_status(resp))
+    print(int(hh_api.get_vacancies()[0].get('id')))
