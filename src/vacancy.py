@@ -1,6 +1,3 @@
-from src.hh_api import HeadHunterAPI
-
-
 class Vacancy:
     """
     Класс Vacancy для получения вакансий, сформированных в удобном виде на основе полученных данных API
@@ -56,12 +53,33 @@ class Vacancy:
         return self.__salary > other.__salary
 
     @classmethod
-    def new_vacancy(cls, pk, name, area, salary, url, requirement, responsibility):
+    def new_vacancy(cls, data):
         """
         Метод создания класса
         :return: объект класса
         """
-        return cls(pk, name, area, salary, url, requirement, responsibility)
+        return cls(pk=data.get('id'),
+                   name=data.get('name'),
+                   url=data.get('alternate_url'),
+                   area=data.get('area').get('name'),
+                   salary=data.get('salary'),
+                   requirement=data.get('snippet').get('requirement'),
+                   responsibility=data.get('snippet').get('responsibility'))
+
+    def to_dict(self):
+        """
+        Конвертирует объект класса в словарь
+        """
+        return {
+            'pk': self.__pk,
+            'name': self.name,
+            'url': self.__url,
+            'area': self.area,
+            'salary': self.__salary,
+            'currency': self.__currency,
+            'requirement': self.requirement,
+            'responsibility': self.responsibility
+        }
 
     @property
     def pk(self):
