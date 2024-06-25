@@ -81,7 +81,7 @@ class HeadHunterAPI(API):
         Метод для получения JSON-файла с вакансиями, полученными по заданному параметру
         :return: JSON
         """
-        while self.params.get('page') != 20:
+        while self.params.get('page') != 1:
             response = self.connect_to_api()
             is_allowed = self._check_status(response)
             if not is_allowed:
@@ -110,7 +110,6 @@ if __name__ == '__main__':
 
     hh_api = HeadHunterAPI()
     hh_api.text = 'Python'
-    hh_api.params['per_page'] = 1
     hh_vacancies = hh_api.get_vacancies()
     #resp = hh_api.connect_to_api()
     #print(resp)
