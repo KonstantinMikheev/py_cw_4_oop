@@ -27,7 +27,7 @@ def vacancy1():
 
 @pytest.fixture
 def vacancy2():
-    return Vacancy(pk='102136724', name='Middle Python Developer', area="Москва",
+    return Vacancy(pk='102136724', name='Middle Python Developer', area="Уфа",
                    salary={"from": 350000, "to": None, "currency": "RUR"},
                    requirement='Опыт коммерческой разработки на Python от 3х лет',
                    responsibility='Разработка ERP системы группы компаний', url='https://hh.ru/vacancy/102300750')
@@ -35,7 +35,7 @@ def vacancy2():
 
 @pytest.fixture
 def vacancy3():
-    return Vacancy(pk='102136724', name='Middle Python Developer', area="Москва",
+    return Vacancy(pk='102136724', name='Middle Python Developer', area="Казань",
                    salary={"from": None, "to": 450000, "currency": "RUR"},
                    requirement='Опыт коммерческой разработки на Python от 3х лет',
                    responsibility='Разработка ERP системы группы компаний', url='https://hh.ru/vacancy/102300750')
@@ -64,7 +64,3 @@ def vacancies_list_for_create():
                          'responsibility': 'Разработка ERP системы группы компаний'},
              'alternate_url': 'https://hh.ru/vacancy/102300750'}]
 
-
-@pytest.fixture
-def vacancy_4_error():
-    return 23

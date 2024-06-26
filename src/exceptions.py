@@ -13,3 +13,7 @@ class HeadHunterAPIException(APIExceptions):
 
 class VacanciesException(APIExceptions):
     pass
+
+
+class UtilsException(APIExceptions):
+    pass

@@ -2,13 +2,12 @@ from src.vacancy import Vacancy
 
 
 def test_new_vacancy():
-    vacancy = Vacancy.new_vacancy(pk='102136724',
-                                  name='Middle Python Developer',
-                                  area="Москва",
-                                  salary=None,
-                                  requirement='Опыт коммерческой разработки на Python от 3х лет',
-                                  responsibility='Разработка ERP системы группы компаний',
-                                  url='https://hh.ru/vacancy/102300750')
+    data = {'id': '102136724', 'name': 'Middle Python Developer', 'area': {"name": "Москва"},
+             'salary': None,
+             'snippet': {'requirement': 'Опыт коммерческой разработки на Python от 3х лет',
+                         'responsibility': 'Разработка ERP системы группы компаний'},
+             'alternate_url': 'https://hh.ru/vacancy/102300750'}
+    vacancy = Vacancy.new_vacancy(data)
     assert isinstance(vacancy, Vacancy) is True
 
 
