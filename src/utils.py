@@ -49,30 +49,25 @@ def filter_by_area(vacancies: list[Vacancy], area: str) -> list[Vacancy]:
         return vacancies_in_area
 
 
-# def filter_by_keywords(vacancies: list[Vacancy]) -> list[dict]:
-#     """
-#     Функция отбора вакансий по введенным через запятую параметрам
-#     :param vacancies: список вакансий
-#     :param keywords: строка с параметрами отбора вакансий через запятую
-#     :return: список вакансий
-#
-#     ВОПРОС! Почему-то не срабатывает проверка ключей поиска по значениям словарей с использованием in.
-#     Например, вводил параметр "Москва", в дебаггере видел, что сравнивается со значением "Москва" в словаре,
-#     но результат не добавлялся.
-#     Проверяющий, прокомментируй, пожалуйста, при даче ОС по курсовой.
-#     """
-#     keywords = input("Введите параметры отбора вакансий через запятую: ").split()
-#     vacancies = [vac.to_dict() for vac in vacancies]
-#     vacancies_with_keywords = []
-#     for vac in vacancies:
-#         vac_values = []
-#         for value in vac.values():
-#             for keyword in keywords:
-#                 if keyword.strip().lower() in str(value).strip().lower():
-#                     vac_values.append(value)
-#         if len(vac_values) > 0:
-#             vacancies_with_keywords.append(vac)
-#     return vacancies_with_keywords
+def filter_by_keywords(vacancies: list[Vacancy]) -> list[dict]:
+    """
+    Функция отбора вакансий по введенным через запятую параметрам
+    :param vacancies: список вакансий
+    :param keywords: строка с параметрами отбора вакансий через запятую
+    :return: список вакансий
+    """
+    keywords = input("Введите параметры отбора вакансий через запятую: ").split(",")
+    vacancies = [vac.to_dict() for vac in vacancies]
+    vacancies_with_keywords = []
+    for vac in vacancies:
+        vac_values = []
+        for value in vac.values():
+            for keyword in keywords:
+                if keyword.strip().lower() in str(value).strip().lower():
+                    vac_values.append(value)
+        if len(vac_values) > 0:
+            vacancies_with_keywords.append(vac)
+    return vacancies_with_keywords
 
 
 def get_top_vacancies(sorted_vacancies: list[Vacancy], top_n: int) -> list[Vacancy]:

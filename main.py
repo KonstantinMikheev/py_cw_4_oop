@@ -1,4 +1,4 @@
-from src.config import VACANCIES
+from src.config import FILENAME
 from src.hh_api import HeadHunterAPI
 from src.saver import JSONSaver
 from src.utils import create_vacancies_list, filter_by_salary, sort_vacancy_by_salary, \
@@ -18,8 +18,8 @@ def user_interaction():
     hh_api.text = search_query
     hh_vacancies = hh_api.get_vacancies()
     vacancies_list = create_vacancies_list(hh_vacancies)
-    json_saver = JSONSaver(VACANCIES)
-    json_saver.keyword_for_del = search_query
+    json_saver = JSONSaver(FILENAME)
+    json_saver.delete_data()
     json_saver.write_data(vacancies_list)
     filtered_city = input("Введите название города для поиска вакансии: ")
     filtered_vacancies = filter_by_area(vacancies_list, filtered_city)
