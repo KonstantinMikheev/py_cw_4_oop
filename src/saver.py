@@ -60,9 +60,6 @@ class JSONSaver(SaverToFile):
         """
         Метод очищает JSON-файл от содержимого.
         """
-        try:
-            data_to_delete = None
-            with open(self.path(), "w", encoding='utf-8') as file:
-                json.dump(data_to_delete, file, ensure_ascii=False, indent=4)
-        except JSONDecodeError:
-            return
+        data_to_delete = []
+        with open(self.path(), "w", encoding='utf-8') as file:
+            json.dump(data_to_delete, file, ensure_ascii=False, indent=4)
